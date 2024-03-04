@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "b8ec7bcf-da08-4207-8158-7df08b84122f",
+    "Id": "ee1a9c6b-ac31-4e8e-9883-d545dd1d2e1b",
     "Name": "vm_mp5",
     "Tags": "viewmodel",
     "Enabled": true,
@@ -9,12 +9,14 @@
         "__type": "ViewModel",
         "ModelRenderer": {
           "_type": "component",
-          "go": "b8ec7bcf-da08-4207-8158-7df08b84122f",
+          "go": "ee1a9c6b-ac31-4e8e-9883-d545dd1d2e1b",
           "component_type": "SkinnedModelRenderer"
-        }
+        },
+        "UseSprintAnimation": false
       },
       {
         "__type": "SkinnedModelRenderer",
+        "AnimationGraph": null,
         "BodyGroups": 11,
         "BoneMergeTarget": null,
         "CreateBoneObjects": false,
@@ -27,14 +29,19 @@
     ],
     "Children": [
       {
-        "Id": "5ec7d480-4ef6-4fe3-9783-34df82326c14",
+        "Id": "ac12468a-d4fe-4f95-82bf-ddec1b230f15",
         "Name": "Arms",
         "Enabled": true,
         "Components": [
           {
             "__type": "SkinnedModelRenderer",
+            "AnimationGraph": null,
             "BodyGroups": 21,
-            "BoneMergeTarget": null,
+            "BoneMergeTarget": {
+              "_type": "component",
+              "go": "ee1a9c6b-ac31-4e8e-9883-d545dd1d2e1b",
+              "component_type": "SkinnedModelRenderer"
+            },
             "CreateBoneObjects": false,
             "MaterialGroup": null,
             "MaterialOverride": null,
