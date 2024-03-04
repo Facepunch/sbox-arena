@@ -1,14 +1,13 @@
 {
   "RootObject": {
-    "Id": "c9c9541b-0b6d-44b1-8b47-c9b6380ec82a",
+    "Id": "0e14b764-35a1-420b-9493-6900d72e5e62",
     "Name": "weapon_usp",
     "Scale": "1.5,1.5,1.5",
     "Enabled": true,
     "Components": [
       {
-        "__version": 0,
         "__type": "SkinnedModelRenderer",
-        "__enabled": true,
+        "AnimationGraph": null,
         "BodyGroups": 9493,
         "BoneMergeTarget": null,
         "CreateBoneObjects": false,
@@ -19,11 +18,11 @@
         "Tint": "1,1,1,1"
       },
       {
-        "__version": 0,
         "__type": "Pistol",
-        "__enabled": true,
         "AmmoType": "Pistol",
         "ClipSize": 15,
+        "Damage": 10,
+        "DamageForce": 5,
         "DefaultAmmo": 60,
         "DeploySound": "sounds/guns/switch/weapon_switch.sound",
         "DeployTime": 0.5,
@@ -34,15 +33,19 @@
         "HoldType": "Pistol",
         "ImpactEffect": "particles/impact.generic.vpcf",
         "IsDeployed": false,
-        "IsReloading": false,
         "MuzzleFlash": "particles/pistol_muzzleflash.vpcf",
         "MuzzleSmoke": "particles/impact.generic.smokepuff.vpcf",
         "Recoil": "-30,0,0",
         "ReloadSoundSequence": "sounds/guns/m1911/reload/m1911.reload.sndseq",
         "ReloadTime": 1.5,
-        "Spread": 0.01
+        "Spread": 0.01,
+        "ViewModelPrefab": {
+          "_type": "gameobject",
+          "prefab": "prefabs/vm_usp.prefab"
+        }
       }
-    ]
+    ],
+    "Children": []
   },
   "ShowInMenu": false,
   "MenuPath": null,
