@@ -166,12 +166,12 @@ public class PlayerController : Component, Component.ITriggerListener, IHealthCo
 	{
 		base.OnAwake();
 		
-		ModelRenderer = Components.GetInDescendantsOrSelf<SkinnedModelRenderer>();
+		ModelRenderer = Components.GetInDescendantsOrSelf<SkinnedModelRenderer>( true );
 		
-		CharacterController = Components.GetInDescendantsOrSelf<CharacterController>();
+		CharacterController = Components.GetInDescendantsOrSelf<CharacterController>( true );
 		CharacterController.IgnoreLayers.Add( "player" );
 		
-		Ragdoll = Components.GetInDescendantsOrSelf<RagdollController>();
+		Ragdoll = Components.GetInDescendantsOrSelf<RagdollController>( true );
 
 		if ( CharacterController.IsValid() )
 		{
@@ -192,6 +192,11 @@ public class PlayerController : Component, Component.ITriggerListener, IHealthCo
 		if ( !IsProxy )
 		{
 			Respawn();
+		}
+
+		if ( IsProxy && ViewModelCamera.IsValid() )
+		{
+			ViewModelCamera.Enabled = false;
 		}
 			
 		base.OnStart();
