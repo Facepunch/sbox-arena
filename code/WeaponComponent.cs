@@ -276,33 +276,32 @@ public abstract class WeaponComponent : Component
 	private void SendAttackMessage( Vector3 startPos, Vector3 endPos, float distance )
 	{
 		var p = new SceneParticles( Scene.SceneWorld, "particles/tracer/trail_smoke.vpcf" );
-		p.SetControlPoint( 0, startPos );
+
+		var tracerStartPosition = startPos;
+		var muzzle = EffectRenderer.SceneModel.GetAttachment( "muzzle" );
+		
+		if ( IsProxy && muzzle.HasValue )
+		{
+			tracerStartPosition = muzzle.Value.Position;
+		}
+		
+		p.SetControlPoint( 0, tracerStartPosition );
 		p.SetControlPoint( 1, endPos );
 		p.SetControlPoint( 2, distance );
 		p.PlayUntilFinished( Task );
 
-		if ( MuzzleFlash is not null )
+		if ( MuzzleFlash is not null && muzzle.HasValue )
 		{
-			var transform = EffectRenderer.SceneModel.GetAttachment( "muzzle" );
-
-			if ( transform.HasValue )
-			{
-				p = new( Scene.SceneWorld, MuzzleFlash );
-				p.SetControlPoint( 0, transform.Value );
-				p.PlayUntilFinished( Task );
-			}
+			p = new( Scene.SceneWorld, MuzzleFlash );
+			p.SetControlPoint( 0, muzzle.Value );
+			p.PlayUntilFinished( Task );
 		}
 		
-		if ( MuzzleSmoke is not null )
+		if ( MuzzleSmoke is not null && muzzle.HasValue )
 		{
-			var transform = EffectRenderer.SceneModel.GetAttachment( "muzzle" );
-
-			if ( transform.HasValue )
-			{
-				p = new( Scene.SceneWorld, MuzzleSmoke );
-				p.SetControlPoint( 0, transform.Value );
-				p.PlayUntilFinished( Task );
-			}
+			p = new( Scene.SceneWorld, MuzzleSmoke );
+			p.SetControlPoint( 0, muzzle.Value );
+			p.PlayUntilFinished( Task );
 		}
 
 		if ( FireSound is not null )
