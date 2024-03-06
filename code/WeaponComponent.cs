@@ -230,6 +230,7 @@ public abstract class WeaponComponent : Component
 		var player = Components.GetInAncestors<PlayerController>();
 
 		var viewModelGameObject = ViewModelPrefab.Clone();
+		viewModelGameObject.Flags |= GameObjectFlags.NotNetworked;
 		viewModelGameObject.SetParent( player.ViewModelRoot, false );
 		
 		ViewModel = viewModelGameObject.Components.Get<ViewModel>();
